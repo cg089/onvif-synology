@@ -29,7 +29,7 @@ Optional arguments:
   -h, --help            Show this help message and exit.
   -s SYN_BASE_URL, --syn-base-url SYN_BASE_URL
                         Base URL for the Surveillance Station instance
-  -U SYN_USERNAME, --syn-suername SYN_USERNAME
+  -U SYN_USERNAME, --syn-username SYN_USERNAME
                         Username for the Surveillance Station instance
   -P SYN_PASSWORD, --syn-password SYN_PASSWORD
                         Password for the Surveillance Station instance
