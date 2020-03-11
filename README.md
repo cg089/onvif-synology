@@ -3,7 +3,7 @@
 A JS CLI tool that attempts to bridge the gap between your ONVIF camera's motion detection and Synology Surveillance Station.
 
 ## Why?
-Some cameras have a PIR sensor, eg https://www.amazon.de/gp/product/B07RX521X6/ref=ox_sc_saved_title_2?smid=AOQ07L2YJ5KSF, but the PIR sensor is unsupported by Synology Disk Station.
+Some cameras have a PIR sensor, eg https://www.amazon.de/gp/product/B07RX521X6/, but the PIR sensor is unsupported by Synology Disk Station.
 
 However, the event (PIR motion) seems to be available with onvif.
 
