@@ -1,37 +1,38 @@
-# zmonvif-events
+# onvif-synology
 
-A JS CLI tool that attempts to bridge the gap between your ONVIF camera's motion detection and Zoneminder.
+A JS CLI tool that attempts to bridge the gap between your ONVIF camera's motion detection and Synology Surveillance Station.
 
 ## Why?
-In a typical Zoneminder installation the server will do video processing to determine which frames have motion. Unfortunately this task is quite CPU intensive. 
+Some cameras have a PIR sensor, eg https://www.amazon.de/gp/product/B07RX521X6/ref=ox_sc_saved_title_2?smid=AOQ07L2YJ5KSF, but the PIR sensor is unsupported by Synology Disk Station.
 
-Fortunately some ONVIF cameras have built in motion detection features, which notify subscribers when an event occurs. 
+However, the event (PIR motion) seems to be available with onvif.
 
-This tool connects to an ONVIF camera and subscribes to these messages. When the motion state changes, it uses Zoneminder's API to arm the selected monitor
+This tool connects to an ONVIF camera and subscribes to these messages. When the motion state changes, it calls the surveillance station event (you have to enable that first) to start capturing video.
 
 ## Install
 
 ```bash
-npm install -g zmonvif-events
+npm install -g onvif-synology
 ```
 
 ## Usage
 
 ```bash
-zmonvif-events --help
-usage: zmonvif-events [-h] -z ZM_BASE_URL -i ZM_MONITOR_ID -c HOSTNAME
+onvif-synology --help
+usage: onvif-synology [-h] -s SYN_BASE_URL -U SYN_USERNAME -P SYN_PASSWORD -c HOSTNAME
                          [-u USERNAME] [-p PASSWORD]
 
 
-ONVIF motion detection events bridge to Zoneminder
+ONVIF motion detection events bridge to Synology Surveillance Station
 
 Optional arguments:
   -h, --help            Show this help message and exit.
-  -z ZM_BASE_URL, --zm-base-url ZM_BASE_URL
-                        Base URL for the Zoneminder instance (with trailing
-                        slash)
-  -i ZM_MONITOR_ID, --zm-monitor-id ZM_MONITOR_ID
-                        The ID of the monitor in Zoneminder
+  -s SYN_BASE_URL, --syn-base-url SYN_BASE_URL
+                        Base URL for the Surveillance Station instance
+  -U SYN_USERNAME, --syn-suername SYN_USERNAME
+                        Username for the Surveillance Station instance
+  -P SYN_PASSWORD, --syn-password SYN_PASSWORD
+                        Password for the Surveillance Station instance
   -c HOSTNAME, --hostname HOSTNAME
                         hostname/IP of the ONVIF camera
   -u USERNAME, --username USERNAME
@@ -43,9 +44,10 @@ Optional arguments:
 **Example**
 
 ```bash
-  zmonvif-events \
-      --zm-base-url http://my-zoneminder-instance.com/zm/ \
-      --zm-monitor-id 1 \
+  onvif-synology \
+      --syn-base-url 192.168.1.100 \
+      --syn-username username
+      --syn-password password
       --hostname 192.168.1.55 \
       --username supersecretusername \
       --password dontshareme
